@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import CoinDetails from './components/CoinDetails';
+import Coins from './components/Coins';
+import Exchange from './components/Exchange';
+import Header from './components/Header';
+import Home from './components/Home';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/coins' element={<Coins></Coins>}></Route>
+        <Route path='/exchange' element={<Exchange></Exchange>}></Route>
+        <Route path='/coin/:id' element={<CoinDetails></CoinDetails>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+      </Routes>
     </div>
   );
 }
